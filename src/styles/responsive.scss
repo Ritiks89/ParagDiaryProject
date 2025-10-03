@@ -1,0 +1,32 @@
+@media(max-width: 1900px) {
+    html {
+        font-size: 14px !important;
+    }
+}
+
+@media(max-width: 1601px) {
+    html {
+        font-size: 12px !important;
+    }
+}
+
+@media(max-width: 1500px) {
+    html {
+        font-size: 12px !important;
+    }
+}
+
+
+
+@media screen and (max-width: 767px) {
+    .w-sm-100 {
+        width: 100% !important;
+    }
+
+//////// AUTH PAGE CSS START//////////
+    .auth-container {
+        width: 85%;
+    }
+/////// AUTH PAGE CSS START //////////
+
+}

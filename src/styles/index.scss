@@ -1,0 +1,352 @@
+@use "sass:meta";
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700;900&display=swap");
+@include meta.load-css("variables.scss");
+
+:root {
+  --primary-color: #1b204a;
+}
+
+body.green-theme {
+  --primary-color: #044a42;
+}
+
+body.purple-theme {
+  --primary-color: #3b1e54;
+}
+
+body.brown-theme {
+  --primary-color: #3e3232;
+}
+
+body.blue-theme {
+  --primary-color: #1b204a;
+}
+
+// body.green-theme .shadow-yellow,
+// body.purple-theme .shadow-yellow,
+// body.brown-theme .shadow-yellow {
+//   box-shadow: none !important;
+// }
+
+// body.green-theme .shadow-grey,
+// body.purple-theme .shadow-grey,
+// body.brown-theme .shadow-grey {
+//   box-shadow: none !important;
+// }
+
+body {
+  font-family: "Poppins", sans-serif !important;
+  background-color: #f5f6fa !important;
+}
+
+p {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif !important;
+  background-color: #f5f6fa !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.fw-600 {
+  font-weight: 600 !important;
+}
+
+.fw-500 {
+  font-weight: 500 !important;
+}
+
+.fw-400 {
+  font-weight: 400 !important;
+}
+
+.fw-300 {
+  font-weight: 300 !important;
+}
+
+
+.fw-700 {
+  font-weight: 700 !important;
+}
+
+.fw-800 {
+  font-weight: 800 !important;
+}
+
+.card {
+  border: 1px solid #e3e4e6 !important;
+  border-radius: 24px !important;
+}
+
+.shadow-yellow {
+  box-shadow: 0px 4px 4px 0px #e8be00 !important;
+}
+
+.shadow-green {
+  box-shadow: 0px 4px 4px 0px #00a725 !important;
+}
+
+.shadow-red {
+  box-shadow: 0px 4px 4px 0px #d03438 !important;
+}
+
+.shadow-grey {
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.border-shadow {
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.col-md-4-5 {
+  flex: 0 0 37%;
+  max-width: 37%;
+}
+
+.col-md-7-5 {
+  flex: 0 0 63%;
+  max-width: 63%;
+}
+
+.rs-picker-error>.rs-picker-input-group {
+  border-color: none !important;
+}
+
+@media (max-width: 768px) {
+
+  .col-md-4-5,
+  .col-md-7-5 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+.rs-picker-input-group {
+  border: 1px solid #c4c4c4 !important;
+  height: 100% !important;
+
+  &:focus-within {
+    box-shadow: none !important;
+  }
+
+  &:focus-visible {
+    box-shadow: none !important;
+    border: 1px solid var(--primary-color) !important;
+  }
+}
+
+.rs-input-group:active {
+  border: 1px solid var(--primary-color) !important;
+  outline: 1px solid var(--primary-color) !important;
+}
+
+.rs-input-group:focus-within,
+.rs-input-group:focus-visible .rs-input-group:not(.rs-input-group-disabled).rs-input-group-focus {
+  outline: 1px solid var(--primary-color) !important;
+  border: none !important;
+}
+
+.dashed-button {
+  border: 2px dashed var(--primary-color) !important;
+  background-color: #fff !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 6px;
+  color: var(--primary-color) !important;
+}
+
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-color: #ccc #0000;
+  animation: l16 1s infinite linear;
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+}
+
+.loader::before {
+  border-color: var(--primary-color) #0000;
+  animation: inherit;
+  animation-duration: 0.5s;
+  animation-direction: reverse;
+}
+
+.loader::after {
+  margin: 8px;
+}
+
+
+@keyframes l16 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+
+
+.MuiDrawer-paperAnchorLeft {
+  background-color: var(--primary-color) !important;
+  color: #7f8ba6 !important;
+}
+
+.MuiTooltip-tooltip {
+  background-color: var(--primary-color) !important;
+}
+
+.MuiAppBar-root {
+  box-shadow: none !important;
+}
+
+.MuiToolbar-regular {
+  background-color: #fff !important;
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px !important;
+  color: #000;
+}
+
+
+.MuiListItemButton-gutters {
+  margin-bottom: 0.3rem !important;
+}
+
+.MuiDrawer-root {
+  width: 0px !important;
+}
+
+.minimize {
+  position: relative;
+
+  p {
+    position: relative;
+    padding-left: 20px; // Adjust spacing between the line and text
+    margin: 0;
+
+    &::before {
+      content: ""; // Mandatory for pseudo-elements
+      position: absolute;
+      top: 50%; // Aligns the line vertically with the text
+      left: 0;
+      transform: translateY(-50%); // Ensures perfect vertical centering
+      width: 13rem; // Length of the line
+      height: 1px; // Thickness of the line
+      background-color: #7f8ba6; // Color of the line
+    }
+  }
+}
+
+.css-ttn1xo {
+  background-color: #f5f6fa !important;
+}
+
+
+
+td,
+th {
+  padding: .6rem 1rem !important;
+  font-size: 14px !important;
+  border-bottom: 1px solid #e9eaeb !important;
+}
+
+th {
+  background-color: #f5f5f5;
+
+}
+
+.auto-popup-table {
+  border: 1px solid #efefef;
+
+  .p-datatable-tbody>tr>td {
+    padding: 0.75rem;
+    color: #4d5874 !important;
+    border-right: 1px solid #efefef;
+    font-size: 16px !important;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
+
+
+.menu-list {
+  .MuiList-root {
+    .MuiListItemText-root {
+      font-size: 14px !important;
+
+      span {
+        font-size: 14px !important;
+      }
+    }
+  }
+}
+
+
+
+.table-sm {
+
+  td,
+  th {
+    padding: .6rem 1rem !important;
+    font-size: 14px !important;
+    border-bottom: 1px solid #e9eaeb !important;
+  }
+
+  th {
+    background-color: #f5f5f5;
+  }
+}
+
+.bordered-table {
+
+  td,
+  th {
+    border-right: 1px solid #e9eaeb !important;
+  }
+}
+
+
+
+.attachment-input{
+  .MuiInputBase-root {
+    padding: 0 !important;
+  }
+}

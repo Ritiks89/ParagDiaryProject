@@ -1,0 +1,169 @@
+@use "index.scss";
+@use "variables";
+
+
+.login-page {
+  font-family: "Poppins", sans-serif !important;
+}
+
+//////////// AUTH PAGES CSS START  ////////////////////
+.auth-container {
+  padding:4rem !important;
+  display: flex;
+  padding: 2rem;
+  border-radius: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin: 0 auto;
+
+  .form-section {
+    width: 100%;
+  }
+
+  .tab-switcher {
+    background: #F5F5F5;
+    border: 1px solid #e9eaeb;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    margin: 40px auto 24px auto;
+
+    .MuiTabs-root {
+      width: 100%;
+      min-height: 0;
+    }
+
+    .MuiTabs-flexContainer {
+      width: 100%;
+    }
+
+    .MuiTab-root {
+      flex: 1;
+      font-weight: 500;
+      font-size: 16px;
+      color: #717680;
+      text-transform: none;
+      border-radius: 12px;
+      min-height: 0;
+      padding: 10px 0;
+      transition: background 0.3s;
+    }
+
+    .Mui-selected {
+      background-color: #fff;
+      color: #414651;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e5e7eb;
+      font-weight: 600;
+    }
+  }
+
+  .reset-icon {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 20px;
+  }
+}
+
+//////////// AUTH PAGES CSS END  ////////////////////
+
+
+
+//////// ADD NEW ORDER /////////
+
+.add-new-order {
+  .tab-switcher {
+    background: #eeeeee;
+    border: 1px solid #e9eaeb;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    margin: 40px auto 24px auto;
+
+    .MuiTabs-root {
+      width: 100%;
+      min-height: 0;
+    }
+
+    .MuiTabs-flexContainer {
+      width: 100%;
+    }
+
+    .MuiTab-root {
+      flex: 1;
+      font-weight: 500;
+      font-size: 16px;
+      color: #717680;
+      text-transform: none;
+      border-radius: 12px;
+      min-height: 0;
+      padding: 10px 0;
+      transition: background 0.3s;
+      color: #414651;
+
+    }
+
+    .Mui-selected {
+      background-color: #fff;
+      color: #414651;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e5e7eb;
+      font-weight: 600;
+    }
+  }
+
+  .upload-bulk-orders {
+   .requirement-list{
+    li{
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .field-label{
+      width: 18rem;
+      color: #8c8c8c;
+      font-style: italic;
+
+    }
+    .field-colon{
+      width: 1rem;
+    }
+   }
+  }
+}
+
+///////// ADD ORDER END /////////
+
+
+///////// ORDER DETAIL PAGE START /////////
+
+.order-details{
+  .order-basic-info{
+    .key{
+      width: 11rem;
+      font-style: italic;
+    }
+    .colon{
+      width: 2rem;
+    }
+  }
+}
+
+//////// ORDER DETAIL PAGE END /////////
+
+
+///////// PRINT SECTION ////////////
+
+  .column-info{
+    display: flex;
+    align-items: center;
+    .key{
+      width: 10rem;
+    }
+    .colon{
+      width: 2rem;
+    }
+  }
