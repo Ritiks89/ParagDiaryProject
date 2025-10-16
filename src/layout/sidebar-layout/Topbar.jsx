@@ -44,7 +44,9 @@ const Topbar = ({ open, handleDrawerOpen }) => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("authToken");
+        localStorage.removeItem("userProfile");
+
     window.location.href = "/";
   };
 

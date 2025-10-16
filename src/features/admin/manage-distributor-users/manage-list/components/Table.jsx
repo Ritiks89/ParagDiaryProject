@@ -6,7 +6,7 @@ import "primereact/resources/themes/lara-light-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 
-const DistributorList = ({ data }) => {
+const DistributorList = ({ data = [] }) => {
   return (
     <div>
       <DataTable value={data} responsiveLayout="scroll" stripedRows>
@@ -15,8 +15,8 @@ const DistributorList = ({ data }) => {
         <Column field="mobile" header="Mobile" />
         <Column field="route" header="Route" />
         <Column field="openingBalance" header="Opening Balance" />
-        <Column field="loginId" header="Login ID" />
-        <Column field="password" header="Password" />
+        <Column field="email" header="Login ID" />
+        {/* <Column field="password" header="Password" /> */}
       </DataTable>
     </div>
   );

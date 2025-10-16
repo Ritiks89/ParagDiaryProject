@@ -26,8 +26,8 @@ const DistributorRateUpdate = () => {
   useEffect(() => {
     const fetchDistributors = async () => {
       try {
-        const { data } = await getDistributorApi();
-        setDistributors(data);
+        const response = await getDistributorApi();
+        setDistributors(response?.data?.data);
       } catch (err) {
         console.error("Error fetching distributors", err);
       }
@@ -35,8 +35,8 @@ const DistributorRateUpdate = () => {
 
     const fetchProducts = async () => {
       try {
-        const { data } = await getProductsApi();
-        setProducts(data);
+        const response = await getProductsApi();
+        setProducts(response?.data?.data?.products);
       } catch (err) {
         console.error("Error fetching products", err);
       }
@@ -112,7 +112,7 @@ const DistributorRateUpdate = () => {
         >
           {products.map((p) => (
             <MenuItem key={p.id} value={p.id}>
-              {p.item_name}
+              {p.productName}
             </MenuItem>
           ))}
         </Select>

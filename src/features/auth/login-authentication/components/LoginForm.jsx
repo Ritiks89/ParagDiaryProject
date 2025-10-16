@@ -47,13 +47,19 @@ const LoginForm = ({ switchToSignUp }) => {
     try {
       const response = await loginApi(data);
 
-      const userProfile = response?.data?.data;
-      localStorage.setItem("userProfile", JSON.stringify(userProfile));
+      const userData = response?.data?.data;
+      const token = userData?.token; 
+
+      if (token) {
+        localStorage.setItem("authToken", token);
+      }
+
+      const { token: _, ...restProfile } = userData || {};
+      localStorage.setItem("userProfile", JSON.stringify(restProfile));
 
       const successMsg = response?.data?.message || "Login successful";
-      toast.success(successMsg);
 
-      navigate("/distributor"); // ✅ navigate instead of window.location.href
+      navigate("/distributor");
     } catch (error) {
       console.log("Login Error:", error);
 

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const apiurl = import.meta.env.VITE_BASE_API_URL;
 const API = axios.create({
-  baseURL:"https://parag-dairy-1.onrender.com/api"
+  baseURL:`${apiurl}/api`
 });
 
 API.interceptors.request.use((req) => {

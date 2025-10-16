@@ -2,29 +2,37 @@ import { tokenPayload } from "@/utils/constantFunction";
 import axios from "axios";
 
 const apiurl = import.meta.env.VITE_BASE_API_URL;
-const token = localStorage?.getItem("token");
-const payload = tokenPayload(token);
+
+// Read token and user profile
+const token = localStorage?.getItem("authToken");
+const storedProfile = localStorage?.getItem("userProfile");
+const userProfile = storedProfile ? JSON.parse(storedProfile) : null;
+
+// Decode token payload
+const payload = token ? tokenPayload(token) : null;
 const user_id = payload?.sub;
 
 const API = axios.create({
-  baseURL: apiurl + "/api/",
+  baseURL: `${apiurl}/api/`,
 });
 
+// Request interceptor
 API.interceptors.request.use((req) => {
+  const token = localStorage?.getItem("authToken");
   if (token) {
     req.headers.Authorization = `Bearer ${token}`;
   }
   req.headers["Content-Type"] = "application/json";
-
   return req;
 });
 
+// Response interceptor
 API.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      localStorage.clear();
-      window.location.href = "/login";
+      // localStorage.clear();
+      // window.location.href = "/login";
     }
     return Promise.reject(error);
   }
@@ -42,7 +50,7 @@ export const getUpdateProductById = (payload) =>
 
 //distribtor add
 export const addDistributorApi = (payload) =>
-  API.post(`auth/users`, { ...payload });
+  API.post(`auth/signup`, { ...payload });
 export const getDistributorApi = () => API.get(`auth/users`);
 export const getUpdateDistributorById = (payload) =>
   API.put(`distributors/${payload.id}`, payload);

@@ -12,7 +12,7 @@ const DistributorManager = () => {
     try {
       setLoading(true);
       const response = await getDistributorApi();
-      setDistributors(response?.data || []); // adjust based on API response
+      setDistributors(response?.data?.data || []); // adjust based on API response
     } catch (error) {
       console.error("Error fetching distributors:", error);
     } finally {

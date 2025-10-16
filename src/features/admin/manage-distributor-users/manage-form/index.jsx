@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-import { TextField, Button, Box, Typography, CircularProgress } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Box,
+  Typography,
+  CircularProgress,
+} from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import { addDistributorApi } from "@/routes/api-routes/dashboardApiRoutes";
 
 // ✅ Validation Schema
 const validationSchema = Yup.object({
@@ -44,8 +51,6 @@ const DistributorForm = () => {
 
         // ✅ Call API
         const response = await addDistributorApi(values);
-
-        console.log("Distributor Added:", response.data);
 
         // ✅ Navigate back to Distributor List after success
         navigate("/distributor");
@@ -146,14 +151,14 @@ const DistributorForm = () => {
         <TextField
           fullWidth
           margin="normal"
-          id="loginId"
-          name="loginId"
+          id="email"
+          name="email"
           label="Login ID"
-          value={formik.values.loginId}
+          value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          error={formik.touched.loginId && Boolean(formik.errors.loginId)}
-          helperText={formik.touched.loginId && formik.errors.loginId}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
         />
 
         <TextField
