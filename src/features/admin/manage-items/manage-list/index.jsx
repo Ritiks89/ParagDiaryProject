@@ -12,7 +12,6 @@ const ProductManager = () => {
     try {
       setLoading(true);
       const response = await getProductsApi();
-      console.log("Response", response);
       setProduct(response?.data?.data?.products || []); // adjust based on API response
     } catch (error) {
       console.error("Error fetching distributors:", error);

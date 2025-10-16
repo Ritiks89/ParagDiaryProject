@@ -55,3 +55,5 @@ export const getDistributorApi = () => API.get(`auth/users`);
 export const getUpdateDistributorById = (payload) =>
   API.put(`distributors/${payload.id}`, payload);
 export const getDistributorById = (id) => API.get(`products/${id}`);
+export const updateRateApi = (payload) =>
+  API.post(`product-prices`, { ...payload });

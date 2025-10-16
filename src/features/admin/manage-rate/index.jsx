@@ -8,12 +8,14 @@ import {
   FormControl,
   InputLabel,
   TextField,
+  CircularProgress,
 } from "@mui/material";
-import axios from "axios";
 import {
   getDistributorApi,
   getProductsApi,
+  updateRateApi,
 } from "@/routes/api-routes/dashboardApiRoutes";
+import { useToast } from "@/hooks/useToast";
 
 const DistributorRateUpdate = () => {
   const [distributors, setDistributors] = useState([]);
@@ -21,8 +23,9 @@ const DistributorRateUpdate = () => {
   const [selectedDistributor, setSelectedDistributor] = useState("");
   const [selectedProduct, setSelectedProduct] = useState("");
   const [rate, setRate] = useState("");
-
-  // Load distributors
+  const [loading, setLoading] = useState(false);
+  const showToast = useToast();
+  // Load distributors and products
   useEffect(() => {
     const fetchDistributors = async () => {
       try {
@@ -53,22 +56,23 @@ const DistributorRateUpdate = () => {
       return;
     }
 
+    const payload = {
+      distributorId: selectedDistributor,
+      productId: selectedProduct,
+      price: rate,
+    };
+
     try {
-      await axios.post(
-        `${import.meta.env.VITE_BASE_API_URL}/api/distributor-rates`,
-        {
-          distributor_id: selectedDistributor,
-          product_id: selectedProduct,
-          rate: parseFloat(rate),
-        }
-      );
-      alert("Rate updated successfully!");
+      setLoading(true);
+      await updateRateApi(payload);
+      showToast(200, "Rate updated successfully!");
       setRate("");
       setSelectedDistributor("");
       setSelectedProduct("");
     } catch (err) {
-      console.error("Error updating rate", err);
-      alert("Failed to update rate");
+      showToast(500, "Rate Already updated successfully!");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -128,15 +132,20 @@ const DistributorRateUpdate = () => {
         onChange={(e) => setRate(e.target.value)}
       />
 
-      {/* Submit Button */}
+      {/* Submit Button with Loader */}
       <Button
         variant="contained"
         color="primary"
         fullWidth
         onClick={handleSubmit}
         sx={{ mt: 2 }}
+        disabled={loading}
       >
-        Update Rate
+        {loading ? (
+          <CircularProgress size={24} color="inherit" />
+        ) : (
+          "Update Rate"
+        )}
       </Button>
     </Box>
   );
