@@ -10,6 +10,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { addDistributorApi } from "@/routes/api-routes/dashboardApiRoutes";
+import { useToast } from "@/hooks/useToast";
 
 // ✅ Validation Schema
 const validationSchema = Yup.object({
@@ -24,7 +25,7 @@ const validationSchema = Yup.object({
   openingBalance: Yup.number()
     .typeError("Opening Balance must be numeric")
     .required("Opening Balance is required"),
-  loginId: Yup.string().required("Login ID is required"),
+  email: Yup.string().required("Login ID is required"),
   password: Yup.string()
     .min(6, "Password must be at least 6 characters")
     .required("Password is required"),
@@ -33,6 +34,7 @@ const validationSchema = Yup.object({
 const DistributorForm = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const showToast = useToast();
 
   const formik = useFormik({
     initialValues: {
@@ -41,8 +43,9 @@ const DistributorForm = () => {
       mobile: "",
       route: "",
       openingBalance: "",
-      loginId: "",
+      email: "",
       password: "",
+      role: "Distributor",
     },
     validationSchema,
     onSubmit: async (values) => {
@@ -55,12 +58,14 @@ const DistributorForm = () => {
         // ✅ Navigate back to Distributor List after success
         navigate("/distributor");
       } catch (error) {
-        console.error("Error adding distributor:", error);
+        console.log("error", error);
+        showToast(500, error?.response?.data?.message);
       } finally {
         setLoading(false);
       }
     },
   });
+  console.log("formuk", formik?.errors);
 
   return (
     <Box

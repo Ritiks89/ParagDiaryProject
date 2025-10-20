@@ -13,11 +13,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { useLocation } from "react-router-dom";
-import { themeBlue, themeColors } from "@/utils/constantVariables";
-import { IoMdArrowDropdown } from "react-icons/io";
-import { useSelector } from "react-redux";
-import { selectUser } from "@/store/slices/userSlice";
+import UserMenuItems from "./UserMenuItems";
 
 const drawerWidth = 300;
 const miniDrawerWidth = 60;
@@ -51,17 +47,14 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function Sidebar({ children }) {
-
-
   const muiTheme = useTheme();
   const isMobile = useMediaQuery(muiTheme.breakpoints.down("md"));
+  const profile = JSON.parse(localStorage.getItem("userProfile"));
 
   const [open, setOpen] = useState(() => {
     const savedState = localStorage.getItem("drawerOpen");
     return savedState === "true";
   });
-
-
 
   useEffect(() => {
     localStorage.setItem("drawerOpen", open.toString());
@@ -70,7 +63,6 @@ export default function Sidebar({ children }) {
   const handleDrawerOpen = () => setOpen(true);
   const handleDrawerClose = () => setOpen(false);
   const toggleDrawer = () => setOpen(!open);
-
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -108,7 +100,9 @@ export default function Sidebar({ children }) {
         }}
       >
         <Box sx={{ my: 3, mx: open ? 3 : 1 }}>
-          {open && <h6 className="fs-16 fw-600 text-center">Distributor Management</h6>}
+          {open && (
+            <h6 className="fs-16 fw-600 text-center">Distributor Management</h6>
+          )}
         </Box>
 
         <Box className="minimize" sx={{ px: 1 }}>
@@ -131,7 +125,11 @@ export default function Sidebar({ children }) {
         </Box>
 
         <Box sx={{ my: 2 }}>
-          <MenuItems onlyIcons={!open} />
+          {profile?.user?.role !== "Admin" ? (
+            <UserMenuItems onlyIcons={!open} />
+          ) : (
+            <MenuItems onlyIcons={!open} />
+          )}
         </Box>
       </Drawer>
 

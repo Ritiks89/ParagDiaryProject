@@ -7,7 +7,7 @@ import { InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import LoadingButton from "@/common/ui/LoadingButton";
 import { loginApi } from "@/routes/api-routes/authApiRoutes";
-// import { toast } from "react-toastify";
+import { useToast } from "@/hooks/useToast";
 
 const initialValues = {
   email: "",
@@ -17,7 +17,7 @@ const initialValues = {
 const LoginForm = ({ switchToSignUp }) => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-
+  const showToast = useToast();
   // 🔹 Check if already logged in
   useEffect(() => {
     const storedUser = localStorage.getItem("userProfile");
@@ -48,7 +48,7 @@ const LoginForm = ({ switchToSignUp }) => {
       const response = await loginApi(data);
 
       const userData = response?.data?.data;
-      const token = userData?.token; 
+      const token = userData?.token;
 
       if (token) {
         localStorage.setItem("authToken", token);
@@ -58,14 +58,13 @@ const LoginForm = ({ switchToSignUp }) => {
       localStorage.setItem("userProfile", JSON.stringify(restProfile));
 
       const successMsg = response?.data?.message || "Login successful";
-
-      navigate("/distributor");
+      restProfile?.user?.role !== "Admin"
+        ? navigate("/items")
+        : navigate("/distributor");
     } catch (error) {
-      console.log("Login Error:", error);
-
       const errMsg =
         error?.response?.data?.message || error?.message || "Login failed";
-      toast.error(errMsg);
+      showToast(500, errMsg);
     } finally {
       setSubmitting(false);
     }

@@ -57,3 +57,6 @@ export const getUpdateDistributorById = (payload) =>
 export const getDistributorById = (id) => API.get(`products/${id}`);
 export const updateRateApi = (payload) =>
   API.post(`product-prices`, { ...payload });
+
+// users API
+export const getUsersItemList = () => API.get(`/products/distributor`);

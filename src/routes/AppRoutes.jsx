@@ -14,6 +14,7 @@ import ProductForm from "@/features/admin/manage-items/manage-form";
 import ProductManager from "@/features/admin/manage-items/manage-list";
 import DistributorRateUpdate from "@/features/admin/manage-rate";
 import ProductManagerSpecialRate from "@/features/admin/manage-rate/manage-list";
+import ItemsDistributor from "@/features/distributor/manage-list";
 
 const AppRoutes = () => {
   return (
@@ -40,6 +41,10 @@ const AppRoutes = () => {
         <Route path="/itemList" element={<Layout />}>
           <Route index element={<ProductManager />} />
           <Route path="form" element={<ProductForm />} />
+        </Route>
+
+        <Route path="/Items" element={<Layout />}>
+          <Route index element={<ItemsDistributor />} />
         </Route>
       </Routes>
     </Router>

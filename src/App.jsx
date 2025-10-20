@@ -9,6 +9,7 @@ import { tokenPayload } from "./utils/constantFunction";
 import ToastProvider from "./hooks/useToast";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { CartProvider } from "./context/CartContxt";
 
 function App() {
   const themeColor = themeColors();
@@ -58,7 +59,9 @@ function App() {
       <ThemeProvider theme={theme}>
         <ToastProvider>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <AppRoutes />
+            <CartProvider>
+              <AppRoutes />
+            </CartProvider>
           </LocalizationProvider>{" "}
         </ToastProvider>
         <NetworkStatusSnackbar />

@@ -22,25 +22,13 @@ import { themeBlue, themeColors } from "@/utils/constantVariables";
 const menuItems = [
   {
     label: "Items",
-    path: "/itemList",
+    path: "/items",
     icon: <FaShippingFast fontSize="1.5rem" />,
-    disabled: false,
-  },
-  {
-    label: "Distributors",
-    path: "/distributor",
-    icon: <FaUserFriends fontSize="1.5rem" />,
-    disabled: false,
-  },
-  {
-    label: "Update Items Rate",
-    path: "/distributor/item-rates",
-    icon: <FaUserFriends fontSize="1.5rem" />,
     disabled: false,
   },
 ];
 
-const MenuItems = ({ onlyIcons }) => {
+const UserMenuItems = ({ onlyIcons }) => {
   const [openSections, setOpenSections] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
@@ -224,4 +212,4 @@ const MenuItems = ({ onlyIcons }) => {
   );
 };
 
-export default MenuItems;
+export default UserMenuItems;
